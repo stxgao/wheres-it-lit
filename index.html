@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Map</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+  <style>
+
+    #map {
+      height: 500px;
+      width: 500px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 49.2611, lng: -123.2531},
+        zoom: 8
+      });
+    }
+
+    function getLocations() {
+      $.getJSON("http://api.bandsintown.com/artists/Nas/events?format=json&app_id=YOUR_APP_ID&date=all", function (json) {
+
+        var location;
+
+
+        $.each(json.zones, function (i, item) {
+          addMarker(item.Latitude,item.Longitude);
+        });
+
+      });
+    }
+
+    function addMarker(lat,lng) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(lat,lng),
+        map: map,
+        icon: redImage
+      });
+      markersArray.push(marker);
+    }
+    
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEMdCoNAKYlpW3M1Y5st6pQ9E3mqp_xYw&callback=initMap"
+  async defer></script>
+</body>
+</html>
