@@ -4,7 +4,8 @@ var venues = [
 ];
 
 var markers = [];
-
+var pixelx = screen.width;
+var pixely = screen.height;
 var map;
 var flightPath;
 
@@ -71,12 +72,16 @@ function addMarkerWithTimeout(location, timeout) {
 			map: map,
 			animation: google.maps.Animation.DROP,
 			clickable: true,
-			title: "Click for more info - STEVEN"
+			title: "Click for more info - STEVEN",
+			zIndex: "I'm Mr. Meeseeks look at me!",
+			html: "I'm Mr. Meeseeks look at me!"
+
 		});
 		// Begin example code to get custom infobox
 		var boxText = document.createElement("div");
 		boxText.style.cssText = "border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px;";
 		boxText.innerHTML = marker.html;
+
 
 		var myOptions = {
 			content: boxText
@@ -91,7 +96,7 @@ function addMarkerWithTimeout(location, timeout) {
 			}
 			,closeBoxMargin: "10px 2px 2px 2px"
 			,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
-			,infoBoxClearance: new google.maps.Size(1, 1)
+			,infoBoxClearance: new google.maps.Size((pixelx-280)/2,pixely/2)
 			,isHidden: false
 			,pane: "floatPane"
 			,enableEventPropagation: false
