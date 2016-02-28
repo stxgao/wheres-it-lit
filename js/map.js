@@ -1,37 +1,3 @@
-/*var venues=[];
-
-
-
-  $.ajax({
-    url: 'http://api.bandsintown.com/artists/Logic/events?format=json&app_id=NWHACKS&date=all',
-    crossDomain: true,
-    dataType: 'jsonp',
-    data: '',
-    type: 'get',
-    headers: {"Access-Control-Allow-Origin": "*"},
-    success: function(data) {
-      var jsonArray = data;
-    var latLongList=[];
-    for (var i = 0; i < jsonArray.length; i++) {
-      //get a single jsonObject from the JsonFile
-      var jsonObject = jsonArray[i];
-      //get latitude from jsonObject
-      var latitude = parseFloat(jsonObject.venue.latitude);
-      //get longitude from jsonObject
-      var longitude = parseFloat(jsonObject.venue.longitude);
-      //put lat and long into single array
-      var LatLong=[];
-      venues.push({lat:latitude,lng:longitude});
-
-    }
-
-
-  }
-
-});*/
-
-
-
 
 var markers = [];
 var pixelx = screen.width;
@@ -75,7 +41,7 @@ function drop() {
 	clearMarkers();
 	flightPath.setMap(map);
 	for (var i = 0; i < venues.length; i++) {
-		addMarkerWithTimeout(venues[i], i * 200);
+		addMarkerWithTimeout(venues[i], i * 200, i);
 	}
 
 	for (var i = 0; i < venues.length; i++) {
@@ -97,20 +63,21 @@ function addLatLng(location, i) {
 
 }
 
-function addMarkerWithTimeout(location, timeout) {
+function addMarkerWithTimeout(location, timeout, index) {
 	window.setTimeout(function() {
 		var marker = new google.maps.Marker({
 			position: location,
 			map: map,
-			animation: google.maps.Animation.DROP,
+			//animation: google.maps.Animation.DROP,
 			clickable: true,
 			title: "Click for more info - STEVEN",
-			html: "I'm Mr. Meeseeks look at me!"
+			//region may be weird, so we need a try catch
+			html: "<p>" + dataSet[index].venueName + "</p>" + "<p>" + dataSet[index].venueDate + "</p>" + "<p>" + dataSet[index].venueCity + ", " + dataSet[index].venueRegion + ", " + dataSet[index].venueCountry + "</p>" 
 
 		});
 		// Begin example code to get custom infobox
 		var boxText = document.createElement("div");
-		boxText.style.cssText = "border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px;";
+		boxText.style.cssText = "color: white; border: 1px solid black; margin-top: 2px; background: grey; padding: 5px;";
 		boxText.innerHTML = marker.html;
 
 
