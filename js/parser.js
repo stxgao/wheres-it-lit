@@ -1,7 +1,6 @@
 var venues=[];
-var Info=[];
 
-
+var dataSet=[];
 
  $.ajax({
     url: 'http://api.bandsintown.com/artists/Kanye%20West/events?format=json&app_id=NWHACKS&date=all', 
@@ -38,23 +37,17 @@ var Info=[];
 			var venueR = jsonObject.venue.region; 
 			var ticket = jsonObject.ticket_status; 
 			
-
+			Info={};
 			Info["ArtistName"]= artist;
-			Info["datetime"]= time;
+			Info["venueDate"]= time;
 			Info["venueName"]= venueN;
 			Info["venueCity"]= venueC;
 			Info["venueCountry"]= venueCo;
 			Info["venueRegion"]= venueR;
 			Info["ticketStatus"]= ticket;
-			
-			Info.push(artist);
-			Info.push(time);
-			Info.push(venueN);
-			Info.push(venueC);
-			Info.push(venueCo);
-			Info.push(venueR);
-			Info.push(ticket);
-			
+			 
+			dataSet.push(Info);
+
 		}
 
 	}
