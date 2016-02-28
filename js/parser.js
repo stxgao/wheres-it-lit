@@ -28,23 +28,32 @@ var Info=[];
 			//get a single jsonObject from the JsonFile
 			var jsonObject = jsonArray[i];
 			//get artistName from jsonObject
-			var artistName = jsonObject.artists[0].name;
+			var artist = jsonObject.artists[0].name;
 			
 			//get venueinfo from jsonObject
 			var time = jsonObject.datetime;
-			var venueName = jsonObject.venue.name;
-			var venueCity = jsonObject.venue.city;
-			var venueCountry = jsonObject.venue.country;
-			var venueRegion = jsonObject.venue.region; 
-			var ticketStatus = jsonObject.ticket_status; 
+			var venueN = jsonObject.venue.name;
+			var venueC = jsonObject.venue.city;
+			var venueCo = jsonObject.venue.country;
+			var venueR = jsonObject.venue.region; 
+			var ticket = jsonObject.ticket_status; 
 			
 
-			Info.push("Artist Name:"+ artistName);
-			Info.push("Venue Name:"+ venueName);
-			Info.push("Country:"+ venueCountry);
-			Info.push("Region:"+ venueRegion);
-			Info.push("Ticket Status:"+ ticketStatus);
-			Info.push("Date & Time:"+ time);
+			Info["ArtistName"]= artist;
+			Info["datetime"]= time;
+			Info["venueName"]= venueN;
+			Info["venueCity"]= venueC;
+			Info["venueCountry"]= venueCo;
+			Info["venueRegion"]= venueR;
+			Info["ticketStatus"]= ticket;
+			
+			Info.push(artist);
+			Info.push(time);
+			Info.push(venueN);
+			Info.push(venueC);
+			Info.push(venueCo);
+			Info.push(venueR);
+			Info.push(ticket);
 			
 		}
 
