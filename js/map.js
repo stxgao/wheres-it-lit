@@ -72,7 +72,7 @@ function addMarkerWithTimeout(location, timeout, index) {
 			clickable: true,
 			title: "Click for more info - STEVEN",
 			//region may be weird, so we need a try catch
-			html: "<p>" + dataSet[index].venueName + "</p>" + "<p>" + dataSet[index].venueDate + "</p>" + "<p>" + dataSet[index].venueCity + ", " + dataSet[index].venueRegion + ", " + dataSet[index].venueCountry + "</p>" 
+			html: "<p>" + dataSet[index].venueName + "</p>" + "<p>" + dataSet[index].venueDate + "</p>" + "<p>" + dataSet[index].venueCity + ", " + dataSet[index].venueRegion + ", " + dataSet[index].venueCountry + "</p>"
 
 		});
 		// Begin example code to get custom infobox
