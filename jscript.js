@@ -1,7 +1,8 @@
 function setURL(){
 	var url1 = "bandsintown.com/";
-	var urlFirst = input1.value;
-	var urlLast = input2.value;
-	var comb = url1 + urlFirst + "%20" + urlLast;
+	var urlName = input1.value.replace(/ /g,"%20");
+	//alert(urlName);
+	var urlEnd = "/events?format=json&app_id=YOUR_APP_ID&date=all";
+	var comb = url1 + urlName + urlEnd;
 	alert(comb);
 }
