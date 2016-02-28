@@ -5,46 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>NWHacks</title>
-
+    <title>Interesting Data</title>
+    <!-- STYLING -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="js/search.js"> </script>
+    <script src = "http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
+    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
+
 
   </head>
 
   <body>
-    <header class="intro-header" style="background-color: #404040;">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <center>
-                  <div class="site-heading">
-                      <h1> <font color = 'white'>NWHacks</font><font color="#1CA57A">.</font></h1>
-                      <hr class="small">
-                  </div>
-                  <div>
-                    <form class="PostSearch" action="" method="get">
-                      <input type="text" id="input1" />
-                      <script type="text/javascript" src="search.js">
-                      </script>
-                      <button type="submit" class="SearchButton btn-default" onclick="setURL()">Search&nbsp;&nbsp;</button>
-                       <!--<input type="text" class="SearchInput" size="50" placeholder="Find a post by title" name="q">
-                       <button type="submit" class="SearchButton btn-default">Search&nbsp;&nbsp;</button><br/>-->
-                    </form>
-                  </div>
-                </br>
-                </center>
+
+    <header class="intro-header head">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <center>
+                    <div class="site-heading">
+                        <a href="index.html"><h1 id = "logo"> <font color = 'white'>Interesting Data</font><font color="#1CA57A">.</font></h1></a>
+                        <div id = "about">
+                          <h3><a href = "about.html"> About</a></h3>
+                        </div>
+                    </div>
+                  </center>
+                </div>
+            </div>
+            <hr class="small">
+            <div class="row">
+              <center>
+              <!-- Begin Search Functionality-->
+                  <font color = 'white'> <h2> Find a Tour Near You</h2></font>
+                  <input type="text" id="input1" />
+                  <button class="SearchButton btn-default" onclick="setURL()">Search&nbsp;&nbsp;</button>
+                  <button id="drop" onclick="drop()">Drop Markers</button>
+              </center>
               </div>
+            </br>
           </div>
-      </div>
     </header>
+    <!-- Begin Map -->
     <div id="map">
-      <script src="map.js"></script>
+      <script src="js/map.js"></script>
     </div>
+    <!--<div id="floating-panel">
+      <button id="drop" onclick="drop()">Drop Markers</button>
+    </div>-->
       <footer class="footer col-md-12 col-lg-12" style="background-color: #404040;">
       </br>
         <div class="container">
@@ -53,8 +66,6 @@
       </footer>
       <!-- Latest compiled and minified JavaScript -->
 
-
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEMdCoNAKYlpW3M1Y5st6pQ9E3mqp_xYw&callback=initalize" async defer></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   </body>
 </html>
