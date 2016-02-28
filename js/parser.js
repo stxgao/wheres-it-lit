@@ -1,9 +1,8 @@
-var venues=[];
 
-var dataSet=[];
 
+function parse(search_url){
  $.ajax({
-    url: 'http://api.bandsintown.com/artists/Kanye%20West/events?format=json&app_id=NWHACKS&date=all',
+    url:search_url,
     crossDomain: true,
     dataType: 'jsonp',
     data: '',
@@ -47,9 +46,9 @@ var dataSet=[];
 			Info["ticketStatus"]= ticket;
 
 			dataSet.push(Info);
-
 		}
 
 	}
 
   });
+}

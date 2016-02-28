@@ -10,7 +10,7 @@ var ib;
 function initialize() {
 
 	var myOptions = {
-		zoom: 1,
+		zoom: 3,
 		center: new google.maps.LatLng(49.2611, -123.2531),
 		//mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
@@ -40,14 +40,13 @@ function initialize() {
 function drop() {
 	clearMarkers();
 	flightPath.setMap(map);
-	for (var i = 0; i < venues.length; i++) {
-		addMarkerWithTimeout(venues[i], i * 200, i);
+	for (var i = 0; i < dataSet.length; i++) {
+		addMarkerWithTimeout(dataSet[i].latlng, i * 200, i);
 	}
 
-	for (var i = 0; i < venues.length; i++) {
-		addLatLng(venues[i], i);
+	for (var i = 0; i < dataSet.length; i++) {
+		addLatLng(dataSet[i].latlng, i);
 	}
-
 }
 
 // Handles click events on a map, and adds a new point to the Polyline.
