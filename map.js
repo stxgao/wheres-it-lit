@@ -26,6 +26,7 @@ function initalize() {
 	flightPath.setMap(map);
 }
 
+
 function drop() {
 	clearMarkers();
 	flightPath.setMap(map);
@@ -54,11 +55,21 @@ function addLatLng(location, i) {
 
 function addMarkerWithTimeout(location, timeout) {
 	window.setTimeout(function() {
-		markers.push(new google.maps.Marker({
+		var marker = new google.maps.Marker({
 			position: location,
 			map: map,
-			animation: google.maps.Animation.DROP
-		}));
+			animation: google.maps.Animation.DROP,
+			clickable: true,
+			title: "Click for more info - STEVEN"
+		});
+		marker.infowindow = new google.maps.InfoWindow({
+			content: '<b>Speed:</b> ' + values.inst + ' knots',
+			maxWidth: 200
+		});
+		marker.addListener('dblclick', function() {
+			infowindow.open(map, marker);
+		});
+		markers.push(marker);
 	}, timeout);
 
 
