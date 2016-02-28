@@ -8,13 +8,22 @@ var markers = [];
 var map;
 var flightPath;
 
-function initalize() {
+var ib;
+
+function initialize() {
+
 	var myOptions = {
 		zoom: 10,
 		center: new google.maps.LatLng(49.2611, -123.2531),
-		mapTypeId: google.maps.MapTypeId.ROADMAP
+		//mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map(document.getElementById("map"), myOptions);
+ 	ib = new InfoBox();
+ 	google.maps.event.addListener(map, "click", function() { ib.close() });
+
+	infowindow = new google.maps.InfoWindow({
+    	content: "loading..."
+	});
 
 	flightPath = new google.maps.Polyline({
 		path: [],
@@ -24,6 +33,8 @@ function initalize() {
 		geodesic: true
 	});
 	flightPath.setMap(map);
+
+
 }
 
 
@@ -62,15 +73,37 @@ function addMarkerWithTimeout(location, timeout) {
 			clickable: true,
 			title: "Click for more info - STEVEN"
 		});
-		marker.infowindow = new google.maps.InfoWindow({
-			content: '<b>Speed:</b> ' + values.inst + ' knots',
-			maxWidth: 200
-		});
-		marker.addListener('dblclick', function() {
-			infowindow.open(map, marker);
-		});
-		markers.push(marker);
-	}, timeout);
+		// Begin example code to get custom infobox
+		var boxText = document.createElement("div");
+		boxText.style.cssText = "border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px;";
+		boxText.innerHTML = marker.html;
+
+		var myOptions = {
+			content: boxText
+			,disableAutoPan: false
+			,maxWidth: 0
+			,pixelOffset: new google.maps.Size(-140, 0)
+			,zIndex: null
+			,boxStyle: { 
+				background: "url('http://google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.12/examples/tipbox.gif') no-repeat"
+				,opacity: 0.75
+				,width: "280px"
+			}
+			,closeBoxMargin: "10px 2px 2px 2px"
+			,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+			,infoBoxClearance: new google.maps.Size(1, 1)
+			,isHidden: false
+			,pane: "floatPane"
+			,enableEventPropagation: false
+		};
+    // end example code for custom infobox
+
+    google.maps.event.addListener(marker, "click", function (e) {
+    	ib.setOptions(myOptions);
+    	ib.open(map, this);
+    });
+    markers.push(marker);
+}, timeout);
 
 
 }
@@ -84,3 +117,5 @@ function clearMarkers() {
 	flightPath.getPath().clear();
 
 }
+
+google.maps.event.addDomListener(window, 'load', initialize);
