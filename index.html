@@ -14,8 +14,10 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- SCRIPTS -->
-    <script type="text/javascript" src="js/search.js"> </script>
+
     <script src = "http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="js/search.js"> </script>
+    <script type="text/javascript" src="js/temp.js"> </script>
     <script src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
     <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
 
@@ -23,41 +25,42 @@
   </head>
 
   <body>
-
-    <header class="intro-header head">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                  <center>
-                    <div class="site-heading">
-                        <a href="index.html"><h1 id = "logo"> <font color = 'white'>Interesting Data</font><font color="#1CA57A">.</font></h1></a>
-                        <div id = "about">
-                          <h3><a href = "about.html"> About</a></h3>
-                        </div>
-                    </div>
-                  </center>
-                </div>
-            </div>
-            <hr class="small">
-            <div class="row">
-              <center>
-              <!-- Begin Search Functionality-->
-                  <font color = 'white'> <h2> Find a Tour Near You</h2></font>
-                  <input type="text" id="input1" />
-                  <button class="SearchButton btn-default" onclick="setURL()">Search&nbsp;&nbsp;</button>
-                  <button id="drop" onclick="drop()">Drop Markers</button>
-              </center>
+    <div class = "wrapper">
+      <header class="intro-header head">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <center>
+                      <div class="site-heading">
+                          <a href="index.html"><h1 id = "logo"> <font color = 'white'>Interesting Data</font><font color="#1CA57A">.</font></h1></a>
+                          <div id = "about">
+                            <h3><a href = "about.html"> About</a></h3>
+                          </div>
+                      </div>
+                    </center>
+                  </div>
               </div>
-            </br>
-          </div>
-    </header>
-    <!-- Begin Map -->
-    <div id="map">
-      <script src="js/map.js"></script>
-    </div>
+              <hr class="small">
+              <div class="row">
+                <center>
+                <!-- Begin Search Functionality-->
+                    <font color = 'white'> <h2> Find a Tour Near You</h2></font>
+                    <input type="text" id="input1" />
+                    <button class="SearchButton btn-default" onclick="setURL()">Search&nbsp;&nbsp;</button>
+                    <button id="drop" onclick="drop()">Drop Markers</button>
+                </center>
+                </div>
+              </br>
+            </div>
+      </header>
+      <!-- Begin Map -->
+      <div id="map">
+        <script src="js/map.js"></script>
+      </div>
     <!--<div id="floating-panel">
       <button id="drop" onclick="drop()">Drop Markers</button>
     </div>-->
+  </div>
       <footer class="footer col-md-12 col-lg-12" style="background-color: #404040;">
       </br>
         <div class="container">
