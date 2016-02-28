@@ -1,7 +1,40 @@
-var venues = [
-{lat: 49.2611, lng: -123.2531},
-{lat: 49.2611, lng: 123.5234},
-];
+var venues=[];
+
+
+
+  $.ajax({
+    url: 'http://api.bandsintown.com/artists/Logic/events?format=json&app_id=NWHACKS&date=all', 
+    crossDomain: true,
+    dataType: 'jsonp',
+    data: '',
+    type: 'get',
+    headers: {"Access-Control-Allow-Origin": "*"},
+    success: function(data) {
+      var jsonArray = data;
+    var latLongList=[];
+    for (var i = 0; i < jsonArray.length; i++) {
+      //get a single jsonObject from the JsonFile
+      var jsonObject = jsonArray[i];
+      //get latitude from jsonObject
+      var latitude = parseFloat(jsonObject.venue.latitude);
+      //get longitude from jsonObject
+      var longitude = parseFloat(jsonObject.venue.longitude);
+      //put lat and long into single array
+      var LatLong=[];
+      venues.push({lat:latitude,lng:longitude});
+      //venues.push(longitude);
+      //LatLong.push(longitude);
+      //store LatLong in mainArray    
+
+    }
+
+
+  }
+   
+  });
+
+
+
 
 var markers = [];
 var pixelx = screen.width;
@@ -14,7 +47,7 @@ var ib;
 function initialize() {
 
 	var myOptions = {
-		zoom: 10,
+		zoom: 1,
 		center: new google.maps.LatLng(49.2611, -123.2531),
 		//mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
@@ -38,12 +71,14 @@ function initialize() {
 
 }
 
+//(new google.maps.LatLng(venues[i].lat, venues[i].lng)
+
 
 function drop() {
 	clearMarkers();
 	flightPath.setMap(map);
 	for (var i = 0; i < venues.length; i++) {
-		addMarkerWithTimeout(venues[i], i * 300);
+		addMarkerWithTimeout(venues[i], i * 200);
 	}
 
 	for (var i = 0; i < venues.length; i++) {
@@ -58,10 +93,10 @@ function addLatLng(location, i) {
 
   // Because path is an MVCArray, we can simply append a new coordinate
   // and it will automatically appear.
-  window.setTimeout(function() {
 
+  window.setTimeout(function() {
   	path.push(new google.maps.LatLng(location.lat, location.lng));
-  },i * 600);
+  },i * 200);
 
 }
 
@@ -73,7 +108,6 @@ function addMarkerWithTimeout(location, timeout) {
 			animation: google.maps.Animation.DROP,
 			clickable: true,
 			title: "Click for more info - STEVEN",
-			zIndex: "I'm Mr. Meeseeks look at me!",
 			html: "I'm Mr. Meeseeks look at me!"
 
 		});
