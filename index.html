@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="images/favicon.png">
 
-    <title>Interesting Data</title>
+    <title>Where's it Lit?</title>
     <!-- STYLING -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -33,9 +33,9 @@
                   <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <center>
                       <div class="site-heading">
-                          <a href="index.html"><h1 id = "logo"> <font color = 'white'>Interesting Data</font><font color="#1CA57A">.</font></h1></a>
+                          <a href="index.html"><h1 id = "logo"> <font color = 'white'>Where's it Lit</font><font color="#E13A3E">?</font></h1></a>
                           <div id = "about">
-                            <a href = "about.html"><h3> About</h3></a>
+                            <a href = "about.html"><h3>About</h3></a>
                           </div>
                       </div>
                     </center>
@@ -45,9 +45,19 @@
               <div class="row">
                 <center>
                 <!-- Begin Search Functionality-->
-                    <font color = 'white'> <h2> Find a Tour Near You</h2></font>
-                    <input type="text" id="input1" />
+                    <font color = 'white'> <h2> Find an Artist's Tour History</h2></font>
+                    <input type="text" id="artistName" />
+                    <select name="radius" id="distanceWilling">
+                      <option value="25">25 miles</option>
+                      <option value="50" selected="selected">50 miles</option>
+                      <option value="75">75 miles</option>
+                      <option value="100">100 miles</option>
+                    </select>
+
+                    <!-- Add radius input box, radius is measured in meters (default right now is 70,000)-->
                     <button class="SearchButton btn-default" onclick="setURL()">Search&nbsp;&nbsp;</button>
+                    <button class="btn-default" onclick="drop()">Chronological Order&nbsp;&nbsp;</button>
+                    <button class="btn-default" onclick="coverage()">Show Coverage&nbsp;&nbsp;</button>
                 </center>
                 </div>
               </br>
