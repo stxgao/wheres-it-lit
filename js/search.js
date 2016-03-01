@@ -47,7 +47,7 @@ function setURL(){
 	/*venues = [];
 	dataSet = [];*/
 	var url1 = "http://api.bandsintown.com/artists/";
-	var urlName = input1.value.replace(/ /g,"%20");
+	var urlName = artistName.value.replace(/ /g,"%20");
 	//alert(urlName);
 	var urlEnd = "/events?format=json&app_id=NWHACKS&date=all";
 	var comb = url1 + urlName + urlEnd;
@@ -56,7 +56,7 @@ function setURL(){
 	parse(search_url);
 	console.log(dataSet);
 	window.setTimeout(function() {
-		drop();
+		coverage();
 	}, 1000); 
 
 
