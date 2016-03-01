@@ -1,9 +1,11 @@
-# nwhacksconcerts
+# Where's it Lit?
 
-Uses Bandsintown api and Google Maps api to plot concerts on a map.
+NWHacks 2016
+
+Uses Bandsintown API and Google Maps API to plot concert history on a map.
 
 We parsed the JSON files from our api requests and manipulated the latLongs to make something meaningful that we can visualize.
 
-Cool way to visualize data using Google Maps.
+Currently has two visualizations: concert history, concert coverage (with variable radiuses)
 
-Used Bootstrap, JQuery, Ajax, Google Maps api, Bandsintown api
+This project used Bootstrap, Javascript, JQuery, Ajax, Google Maps API, and Bandsintown API
